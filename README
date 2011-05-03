@@ -13,14 +13,14 @@ First: Sorry about my English, but i try to do this understable as posible.
 1. Supported Methods (see the example bellow)
 
 * Synchronic:
-	var sync = require('./path/to/scripts/file.js');
-	console.log(sync.works);       // returns 'yes, it\' works...!!'
+  var sync = require('./path/to/scripts/file.js');
+  console.log(sync.works);       // returns 'yes, it\' works...!!'
 
 * Asynchronic:
-	require('./path/to/scripts/file.js', function(exports){
-		var async = exports;
-		console.log(async.works);    // returns 'yes, it\' works...!!'
-	});
+  require('./path/to/scripts/file.js', function(exports){
+    var async = exports;
+    console.log(async.works);    // returns 'yes, it\' works...!!'
+  });
 
 
 Example of 'file.js'
@@ -29,11 +29,11 @@ var counter = 0;
 
 // How to overwrite exports with a function
 exports = module.exports = function inc(){
-	return ++counter;
+  return ++counter;
 };
 
 exports.reset = function(){
-	return counter = 0;
+  return counter = 0;
 };
 
 exports.works = 'yes, it\' works...!!';
@@ -44,9 +44,9 @@ exports.works = 'yes, it\' works...!!';
 
 In the javascript file
 
-	require.paths.unshift('file', 'lib/scripts/file.js');
-	var unshift = require('file');
-	console.log(unshift.works);    // returns 'yes, it\' works...!!'
+  require.paths.unshift('file', 'lib/scripts/file.js');
+  var unshift = require('file');
+  console.log(unshift.works);    // returns 'yes, it\' works...!!'
 
 * The unshift function is more like an alias
 
@@ -57,100 +57,117 @@ foo.js is the application, but it depends from other scripts, like jQuery. Norma
 
 The structure of the site:
 
-	http://www.example.com/index.html
-	http://www.example.com/path/to/scripts/foo.js  // depends from bar.js
-	http://www.example.com/path/to/scripts/bar.js
+  http://www.example.com/index.html
+  http://www.example.com/path/to/scripts/foo.js  // depends from bar.js
+  http://www.example.com/path/to/scripts/bar.js
 
 In the index.html file:
 
 The "normal" ways to implement and run these scripts (foo & bar) into the page are
 
 * First 'bar.js' because 'foo.js' depends of this one,
-	<script src="path/to/scripts/bar.js"></script> or
-	<script src="/path/to/scripts/bar.js"></script> or
-	<script src="./path/to/scripts/bar.js"></script>
-	<script src="http://www.example.com/path/to/scripts/bar.js"></script>
+  <script src="path/to/scripts/bar.js"></script> or
+  <script src="/path/to/scripts/bar.js"></script> or
+  <script src="./path/to/scripts/bar.js"></script>
+  <script src="http://www.example.com/path/to/scripts/bar.js"></script>
 
 * than 'foo.js'
-	<script src="./path/to/scripts/foo.js"></script>
+  <script src="./path/to/scripts/foo.js"></script>
 
 
 # Now the same with Require5.JS, with a few changes
 
 The structure of example site with Require5.JS:
 
-	http://www.example.com/index.html
-	http://www.example.com/path/to/require/require5.js
-	http://www.example.com/path/to/scripts/foo.js  // depends of bar.js
-	http://www.example.com/path/to/scripts/bar.js
+  http://www.example.com/index.html
+  http://www.example.com/path/to/require/require5.js
+  http://www.example.com/path/to/scripts/foo.js  // depends of bar.js
+  http://www.example.com/path/to/scripts/bar.js
 
 In the index.html file:
 
-	<script src="./path/to/require/require5.js"></script>
-	<script>
-		require.paths.unshift('foo', './path/to/scripts/foo.js');
-		require('foo');
-	</script>
+  <script src="./path/to/require/require5.js"></script>
+  <script>
+    require.paths.unshift('foo', './path/to/scripts/foo.js');
+    require('foo');
+  </script>
 
 In the top of 'foo.js' file
 
-	require('./bar.js');
-	// than your code
+  require('./bar.js');
+  // than your code
 
 
 4. Other features of Require5.JS
 
 The private Values:
 
-	__dirname:  following the previous example, in 'foo.js' it will be 'http://www.example.com/path/to/scripts/'
-	__filename: following the previous example, in 'foo.js' it will be 'foo.js'
+  __dirname:  following the previous example, in 'foo.js' it will be 'http://www.example.com/path/to/scripts/'
+  __filename: following the previous example, in 'foo.js' it will be 'foo.js'
 
 
-The Resolve-Function: Path recognition
+The require.paths Attribute
 
-	var path = require.resolve('./path/to/scripts/foo.js');
-	// if the Resolve-Function was call at http://www.example.com/index.html
-	// returns the path 'http://www.example.com/path/to/scripts/foo.js'
-	
-	var path = require.resolve('./bar.js');
-	// if the Unshift-Function was call at http://www.example.com/path/to/scripts/foo.js
-	// returns the path 'http://www.example.com/path/to/scripts/bar.js'
+	return a object with all module-paths and their status
+	- 'loaded'   : the script is on storage
+	- 'fails'	   : the script couldn't be loaded or compiled
+	- 'unschift' : only an alias name was setted for this script, it is not used any time
+	- 'ready'    : the script is loaded and compiled
+	- undefined
+
+
+The require.alias Attribute
+
+	return a object with all alias and their paths
 
 
 The Unshift-Function: Alias-Names for Script-Files with Path recognition
 
-	var path = require.paths.unshift('foo', './path/to/scripts/foo.js');
-	// if the Unshift-Function was call at http://www.example.com/index.html
-	// like the Resolve-Function returns the path 'http://www.example.com/path/to/scripts/foo.js'
-	
-	var path = require.paths.unshift('bar', './bar.js');
-	// if the Unshift-Function was call at http://www.example.com/path/to/scripts/foo.js
-	// like the Resolve-Function returns the path 'http://www.example.com/path/to/scripts/bar.js'
+  var path = require.paths.unshift('foo', './path/to/scripts/foo.js');
+  // if the Unshift-Function was call at http://www.example.com/index.html
+  // like the Resolve-Function returns the path 'http://www.example.com/path/to/scripts/foo.js'
+  
+  var path = require.paths.unshift('bar', './bar.js');
+  // if the Unshift-Function was call at http://www.example.com/path/to/scripts/foo.js
+  // like the Resolve-Function returns the path 'http://www.example.com/path/to/scripts/bar.js'
+
+
+The Resolve-Function: Path recognition
+
+  var path = require.resolve('./path/to/scripts/foo.js');
+  // if the Resolve-Function was called at http://www.example.com/index.html
+  // returns a object with 3 elements, the alias (setted with unshift),
+  // the path 'http://www.example.com/path/to/scripts/foo.js' and the status
+  
+  var path = require.resolve('./bar.js');
+  // if the Unshift-Function was called at http://www.example.com/path/to/scripts/foo.js
+  // returns a object with 3 elements, the alias (setted with unshift),
+  // the path 'http://www.example.com/path/to/scripts/bar.js' and the status
 
 
 The Require-Function's returned Values: exports, module, require, __dirname, __filename
 
-	function requestHandler(exports, module, require, __dirname, __filename){
-		// require continue to work as it will be at 'http://www.example.com/path/to/scripts/foo.js'
-		require('./bar.js');
-		
-		// do something
-		console.log(__filename); 			// returns 'foo.js'
-		console.log(__dirname);  			// returns 'http://www.example.com/path/to/scripts/'
-		console.log(exports.works);   // returns 'yes, it\' works...!!'
-	}
-	require('http://www.example.com/path/to/scripts/foo.js', requestHandler);
+  function requestHandler(exports, module, require, __dirname, __filename){
+    // require continue to work as it will be at 'http://www.example.com/path/to/scripts/foo.js'
+    require('./bar.js');
+    
+    // do something
+    console.log(__filename);      // returns 'foo.js'
+    console.log(__dirname);       // returns 'http://www.example.com/path/to/scripts/'
+    console.log(exports.works);   // returns 'yes, it\' works...!!'
+  }
+  require('http://www.example.com/path/to/scripts/foo.js', requestHandler);
 
 
 The Require-Function's returned getContext-Function:
-	
-	var async = require('http://www.example.com/path/to/scripts/foo.js', function(){
-		var context = async();
-		context.require('./bar.js');
-		
-		// do something
-		console.log(context.__filename);		// returns 'foo.js'
-		console.log(context.__dirname);			// returns 'http://www.example.com/path/to/scripts/'
-		console.log(context.exports.works);	// returns 'yes, it\' works...!!'
-	});
+  
+  var async = require('http://www.example.com/path/to/scripts/foo.js', function(){
+    var context = async();
+    context.require('./bar.js');
+    
+    // do something
+    console.log(context.__filename);      // returns 'foo.js'
+    console.log(context.__dirname);       // returns 'http://www.example.com/path/to/scripts/'
+    console.log(context.exports.works);   // returns 'yes, it\' works...!!'
+  });
 
