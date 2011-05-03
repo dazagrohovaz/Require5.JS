@@ -12,7 +12,6 @@
   dependencies:
     utils/ajax.js
     utils/path.js
-    utils/scripts.js
 
   Permission is hereby granted, free of charge, to any person obtaining
   a copy of this software and associated documentation files (the
@@ -37,7 +36,7 @@
 if(!global) var global = window.global = window;
 
 // For development, IMPORTANT..!!! Ignore the cache and storage
-if(false /** development??? Set this to true */){
+if(true /** development??? Set this to true */){
   if(!global.runUnitTest) global.runUnitTest = {}; 
   global.runUnitTest.require = true;
   global.runUnitTest.resolveUri = false;
@@ -309,11 +308,11 @@ if(false /** development??? Set this to true */){
       // if not match append '/index.js' to the Url
       url = res.protocol + (!!res.protocol ? '://' : '') + res.authority + 
             res.directory + ((res.directory.substr(-1) != '/' ) ? '/' : '') + 
-            res.file + ((!!res.file && res.file.substr(-3) == '.js' ) ? '' : '/index.js') + 
+            res.file + ((!!res.file && res.file.substr(-3) == '.js' ) ? '' : '/index.js')
             
-            // querystring and anchor
-            ( !!res.query ? '?' : '' ) + res.query + 
-            ( !!res.anchor ? '#' : '' ) + res.anchor;
+            // no querystring and anchor
+            //( !!res.query ? '?' : '' ) + res.query + 
+            //( !!res.anchor ? '#' : '' ) + res.anchor;
       
       // normalize the url and return it
       return normalizeUri(url);
@@ -341,17 +340,17 @@ if(false /** development??? Set this to true */){
                                    uri.directory + ((uri.directory.substr(-1) != '/' ) ? '/' : '') + 
                                    uri.file + ((!!uri.file && uri.file.substr(-3) == '.js' ) ? '' : '/index.js'),
       
-      __query = __self.__query = uri.query,
+      //__query = __self.__query = uri.query,
       
       // querystring as object
-      __query = __self.__query = uri.queryKey,
+      //__query = __self.__query = uri.queryKey,
       
       // directory and file names
       __dirname = __self.__dirname = __module.slice(0, __module.length - uri.file.length),
       __filename = __self.__filename = uri.file,
       
       // anchor
-      __anchor = __self.__anchor = ( !!uri.anchor ? uri.anchor.split(',') : [] ),
+      //__anchor = __self.__anchor = ( !!uri.anchor ? uri.anchor : '' ),
       
       // require
       require = __self.require = function(path, callback){ return _require(path, callback); },
@@ -512,12 +511,12 @@ if(false /** development??? Set this to true */){
           var scriptString =
           'window[\'script.' + this.__module + '\'] = function(){\n' +
           ' try {\n' +
-          '  (function(global, require, module, exports, __dirname, __filename, __module, __query, __queryKey, __anchor){\n' +
+          '  (function(global, require, module, exports, __dirname, __filename ){\n' +  // REMOVED: __module, __query, __queryKey, __anchor
           '   this.global = this;\n' +
           '   "===== BEGIN OF FILE =====";\n' +
               script + '\n' +
           '   "===== END  OF  FILE =====";\n' +
-          '   }).call(window, window, this.require, this.module, this.module.exports, this.__dirname, this.__filename, this.__module, this.__query, this.__queryKey, this.__anchor);\n' +
+          '   }).call(window, window, this.require, this.module, this.module.exports, this.__dirname, this.__filename);\n' +  // REMOVED: this.__module, this.__query, this.__queryKey, this.__anchor 
           '   return this;\n' +
           ' } catch(e) {\n' +
           '   return { e: e };\n' +
@@ -579,7 +578,13 @@ if(false /** development??? Set this to true */){
             // otherwise request the script with XHR
             var req = new xhr();
             req.open('GET', info.path, async);
-            // for unittest modus set request header If-Modified-Since
+						
+						// resolve Origin to make domain cross-over calls
+						var host = parseUri(info.path);
+						host = host.protocol + (!!host.protocol ? '://' : '') + host.authority
+						// req.setRequestHeader("Origin", host);
+            
+						// for unittest modus set request header If-Modified-Since
             if(global.runUnitTest && global.runUnitTest.require) req.setRequestHeader('If-Modified-Since', 'Sat, 1 Jan 2005 00:00:00 GMT');
             req.onreadystatechange = onReadyStateChange;
             req.send();
