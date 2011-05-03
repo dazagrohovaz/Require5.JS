@@ -578,13 +578,8 @@ if(true /** development??? Set this to true */){
             // otherwise request the script with XHR
             var req = new xhr();
             req.open('GET', info.path, async);
-						
-						// resolve Origin to make domain cross-over calls
-						var host = parseUri(info.path);
-						host = host.protocol + (!!host.protocol ? '://' : '') + host.authority
-						// req.setRequestHeader("Origin", host);
-            
-						// for unittest modus set request header If-Modified-Since
+            					
+            // for unittest modus set request header If-Modified-Since
             if(global.runUnitTest && global.runUnitTest.require) req.setRequestHeader('If-Modified-Since', 'Sat, 1 Jan 2005 00:00:00 GMT');
             req.onreadystatechange = onReadyStateChange;
             req.send();
