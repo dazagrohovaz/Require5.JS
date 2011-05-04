@@ -78,7 +78,7 @@ The "normal" ways to implement and run these scripts (foo & bar) into the page a
   &lt;script src="/path/to/scripts/bar.js"&gt;&lt;/script&gt; or
   &lt;script src="./path/to/scripts/bar.js"&gt;&lt;/script&gt;
   &lt;script src="http://www.example.com/path/to/scripts/bar.js"&gt;&lt;/script&gt;<br>
-* than 'foo.js'<br>
+* then 'foo.js'<br>
   &lt;script src="./path/to/scripts/foo.js"&gt;&lt;/script&gt;
 <br>
 </pre>
@@ -105,7 +105,7 @@ The "normal" ways to implement and run these scripts (foo & bar) into the page a
 #### at the top of the 'foo.js' file<br>
 <pre>
   require('./bar.js');
-  // than the code
+  // then the code
 </pre>
 
 
