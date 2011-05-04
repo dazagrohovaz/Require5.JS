@@ -73,15 +73,13 @@ The unshift function is more like an alias, define a shortname for access quickl
 #### Into the index.html file:<br>
 <pre>
 The "normal" ways to implement and run these scripts (foo & bar) into the page are<br>
-* First 'bar.js' because 'foo.js' depends of this one,
+* First 'bar.js' because 'foo.js' depends of this one<br>
   &lt;script src="path/to/scripts/bar.js"&gt;&l;t/script&gt; or
   &lt;script src="/path/to/scripts/bar.js"&gt;&lt;/script&gt; or
   &lt;script src="./path/to/scripts/bar.js"&gt;&lt;/script&gt;
   &lt;script src="http://www.example.com/path/to/scripts/bar.js"&gt;&lt;/script&gt;<br>
-<br>
-* than 'foo.js'
+* than 'foo.js'<br>
   &lt;script src="./path/to/scripts/foo.js"&gt;&lt;/script&gt;
-<br>
 </pre>
 
 ### Now the same with Require5.JS, with a few changes
