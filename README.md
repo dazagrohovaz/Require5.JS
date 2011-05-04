@@ -174,7 +174,8 @@ The "normal" ways to implement and run these scripts (foo & bar) into the page a
   require(./path/to/scripts/foo.js', requestHandler);
 </pre>
 
-#### <br>The Require-Function's returned getContext-Function: <h5><i>Access to the Module-Context of Asynchronic Calls<h5><i>
+#### <br>The Require-Function's returned getContext-Function:<br>
+###### <i>Access to the Module-Context of Asynchronic Calls<i>
 <pre>
   var async = require('./path/to/scripts/foo.js', function(){
     var context = async();
