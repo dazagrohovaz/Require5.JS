@@ -16,16 +16,16 @@
 
 * Synchronic:<br>
 <pre>
-  var sync = require('./path/to/scripts/file.js');<br>
-  console.log(sync.works);       // returns 'yes, it\' works...!!'<br>
+  var sync = require('./path/to/scripts/file.js');
+  console.log(sync.works);       // returns 'yes, it\' works...!!'
 </pre>
 
 * Asynchronic:<br>
 <pre>
-  require('./path/to/scripts/file.js', function(exports){<br>
-    var async = exports;<br>
-    console.log(async.works);    // returns 'yes, it\' works...!!'<br>
-  });<br>
+  require('./path/to/scripts/file.js', function(exports){
+    var async = exports;
+    console.log(async.works);    // returns 'yes, it\' works...!!'
+  });
 </pre>
 
 
