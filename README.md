@@ -57,7 +57,7 @@ The unshift function is more like an alias, define a shortname for access quickl
 
 ## The Example Site:
 
-##### Concept / Idea:<br>
+#### Concept / Idea:<br>
 <pre>
   foo.js is the application, but it depends from other scripts, like jQuery. Normaly, these need to be loaded first.
   Well in this case 'foo.js' depends from 'bar.js'.
@@ -70,18 +70,19 @@ The unshift function is more like an alias, define a shortname for access quickl
   http://www.example.com/path/to/scripts/bar.js
 </pre>
 
-In the index.html file:
-
-The "normal" ways to implement and run these scripts (foo & bar) into the page are
-
+#### In the index.html file:<br>
+<pre>
+The "normal" ways to implement and run these scripts (foo & bar) into the page are<br>
 * First 'bar.js' because 'foo.js' depends of this one,
   <script src="path/to/scripts/bar.js"></script> or
   <script src="/path/to/scripts/bar.js"></script> or
   <script src="./path/to/scripts/bar.js"></script>
-  <script src="http://www.example.com/path/to/scripts/bar.js"></script>
-
+  <script src="http://www.example.com/path/to/scripts/bar.js"></script><br>
+<br>
 * than 'foo.js'
   <script src="./path/to/scripts/foo.js"></script>
+<br>
+</pre>
 
 ### Now the same with Require5.JS, with a few changes
 
