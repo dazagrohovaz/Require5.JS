@@ -1,5 +1,5 @@
 # <br><i>Require5.JS</i>
-##### almost like NodeJS style require-Function, but for the browser
+##### almost like NodeJS style require-Function for the browser
 # Features:
 
   * load, compile and run scripts once<br>
