@@ -1,6 +1,6 @@
 /**
   Require5.JS just like NodeJS style require function for the browser
-  (c) DazaGrohovaz.Net / ProxyJS.com <guidoalfredo@dazagrohovaz.net>
+  (c) DazaGrohovaz.Net guidoalfredo@dazagrohovaz.net / ProxyJS.com support@proxyjs.com
 
   Features:
   - load, compile and run scripts once
