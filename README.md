@@ -20,11 +20,13 @@
   console.log(sync.works);       // returns 'yes, it\' works...!!'
 </code>
 
-* Asynchronic:
+* Asynchronic:<br>
+<code>
   require('./path/to/scripts/file.js', function(exports){
     var async = exports;
     console.log(async.works);    // returns 'yes, it\' works...!!'
   });
+</code>
 
 
 Example of 'file.js'
