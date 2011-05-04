@@ -11,7 +11,7 @@
     just push the scripts into document.head<br>
 
 
-1. Supported Methods (see the example bellow)
+## Supported Methods (see the example bellow)
 
 * Synchronic:
   var sync = require('./path/to/scripts/file.js');
