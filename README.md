@@ -79,7 +79,8 @@ The "normal" ways to implement and run these scripts (foo & bar) into the page a
   &lt;script src="./path/to/scripts/bar.js"&gt;&lt;/script&gt;
   &lt;script src="http://www.example.com/path/to/scripts/bar.js"&gt;&lt;/script&gt;<br>
 * than 'foo.js'<br>
-  &lt;script src="./path/to/scripts/foo.js"&gt;&lt;/script&gt;<br>
+  &lt;script src="./path/to/scripts/foo.js"&gt;&lt;/script&gt;
+<br>
 </pre>
 
 ### Now the same with Require5.JS, with a few changes
