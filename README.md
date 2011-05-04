@@ -192,11 +192,11 @@ The "normal" ways to implement and run these scripts (foo & bar) into the page a
 </pre>
 
 #### <br>Cross-Domain Calls<br>
-<pre>
   These are complete asynchronic and don't support storage or other features,
   just push scripts into the documen'st head tag.
   for example: We use this to load outside libraries like jQuery or MooTools
   from googleapis.com to get allways the last one.<br>
+<pre>
   // with callback
   require('http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js', function(state){
     if(state == 'ready') console.log('great!')
@@ -212,5 +212,4 @@ The "normal" ways to implement and run these scripts (foo & bar) into the page a
     }
   }
   setTimeout(sayGreat, 10);
-<br><br>
 </pre>
