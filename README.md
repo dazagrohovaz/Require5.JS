@@ -29,7 +29,7 @@
 </pre>
 
 
-#### Example of 'file.js'
+#### Example: file.js
 
 <pre>
 var counter = 0;
