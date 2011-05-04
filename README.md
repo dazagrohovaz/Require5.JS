@@ -29,21 +29,23 @@
 </pre>
 
 
-### Example of 'file.js'
-===== BEGIN OF FILE =====
+#### Example of 'file.js'
+#####===== BEGIN OF FILE =====
+<pre>
 var counter = 0;
 
 // How to overwrite exports with a function
 exports = module.exports = function inc(){
-  return ++counter;
+&nbsp; return ++counter;
 };
 
 exports.reset = function(){
-  return counter = 0;
+&nbsp; return counter = 0;
 };
 
 exports.works = 'yes, it\' works...!!';
-===== END  OF  FILE =====
+</pre>
+#####===== END  OF  FILE =====
 
 
 ## Working with the 'unshift' function
