@@ -58,7 +58,8 @@ The unshift function is more like an alias, define a shortname for access quickl
 ## The Example Site:
 
 * Concept / Idea:<br>
-foo.js is the application, but it depends from other scripts, like jQuery. Normaly, these need to be loaded first.
+foo.js is the application, but it depends from other scripts, like jQuery. Normaly, these need to be loaded first.<br>
+Well in this case 'foo.js' depends from 'bar.js'.
 
 * The structure of the site:<br>
 <pre>
