@@ -149,7 +149,7 @@ The "normal" ways to implement and run these scripts (foo & bar) into the page a
   <br>
 </pre>
 
-#### <br>The Resolve-Function:<br>
+#### <br>The Resolve-Function's returned Object:<br>
 ###### <i>Path, Alias and Status recognition</i>
 <pre>
   var res = require.resolve('foo');
