@@ -83,9 +83,9 @@ The "normal" ways to implement and run these scripts (foo & bar) into the page a
 <br>
 </pre>
 
-### Now the same with Require5.JS, with a few changes
+### Now the same with <i>Require5.JS</i>, with a few changes
 
-#### The structure of example site with Require5.JS:<br>
+#### The structure of example site with <i>Require5.JS</i>:<br>
 <pre>
   http://www.example.com/index.html
   http://www.example.com/path/to/require/require5.js
