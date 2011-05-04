@@ -30,7 +30,7 @@
 
 
 #### Example of 'file.js'
-#####===== BEGIN OF FILE =====
+
 <pre>
 var counter = 0;
 
@@ -45,7 +45,6 @@ exports.reset = function(){
 
 exports.works = 'yes, it\' works...!!';
 </pre>
-#####===== END  OF  FILE =====
 
 
 ## Working with the 'unshift' function
