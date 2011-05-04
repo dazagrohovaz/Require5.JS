@@ -54,7 +54,7 @@ The unshift function is more like an alias, with this can be define a short name
   require.paths.unshift('file', 'lib/scripts/file.js');
   var unshift = require('file');
   console.log(unshift.works);    // returns 'yes, it\' works...!!'
-<pre>
+</pre>
 
 
 ## The example site:
