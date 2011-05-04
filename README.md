@@ -74,38 +74,41 @@ The unshift function is more like an alias, define a shortname for access quickl
 <pre>
 The "normal" ways to implement and run these scripts (foo & bar) into the page are<br>
 * First 'bar.js' because 'foo.js' depends of this one<br>
-  &lt;script src="path/to/scripts/bar.js"&gt;&l;t/script&gt; or
+  &lt;script src="path/to/scripts/bar.js"&gt;&lt;/script&gt; or
   &lt;script src="/path/to/scripts/bar.js"&gt;&lt;/script&gt; or
   &lt;script src="./path/to/scripts/bar.js"&gt;&lt;/script&gt;
   &lt;script src="http://www.example.com/path/to/scripts/bar.js"&gt;&lt;/script&gt;<br>
 * than 'foo.js'<br>
-  &lt;script src="./path/to/scripts/foo.js"&gt;&lt;/script&gt;
+  &lt;script src="./path/to/scripts/foo.js"&gt;&lt;/script&gt;<br>
 </pre>
 
 ### Now the same with Require5.JS, with a few changes
 
-The structure of example site with Require5.JS:
-
+#### The structure of example site with Require5.JS:<br>
+<pre>
   http://www.example.com/index.html
   http://www.example.com/path/to/require/require5.js
   http://www.example.com/path/to/scripts/foo.js  // depends of bar.js
   http://www.example.com/path/to/scripts/bar.js
+</pre>
 
-In the index.html file:
-
-  <script src="./path/to/require/require5.js"></script>
-  <script>
+#### Into the index.html file:<br>
+<pre>
+  &lt;script src="./path/to/require/require5.js"&gt;&lt;/script&gt;
+  &lt;script&gt;
     require.paths.unshift('foo', './path/to/scripts/foo.js');
     require('foo');
-  </script>
+  &lt;/script&gt;
+</pre>
 
-In the top of 'foo.js' file
-
+#### at the top of the 'foo.js' file<br>
+<pre>
   require('./bar.js');
-  // than your code
+  // than the code
+</pre>
 
 
-4. Other features of Require5.JS
+## Other features of <i>Require5.JS</i>
 
 The private Values:
 
