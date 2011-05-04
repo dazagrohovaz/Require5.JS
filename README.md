@@ -146,18 +146,17 @@ The "normal" ways to implement and run these scripts (foo & bar) into the page a
   var path = require.paths.unshift('bar', './bar.js');
   // if the Unshift-Function was called at http://www.example.com/path/to/scripts/foo.js
   // returns 'http://www.example.com/path/to/scripts/bar.js'
-  <br>
 </pre>
 
 #### <br>The Resolve-Function's returned Object:<br>
 ###### <i>Path, Alias and Status recognition</i>
 <pre>
   var res = require.resolve('foo');
-  // returns a object with 3 elements, the alias (setted with unshift), the path and the status
-  { alias: 'foo', path: 'http://www.example.com/path/to/scripts/foo.js', status: 'unshift' }<br>
+  // returns a object with 3 elements, the alias (setted with unshift), the path and the status<br>
+  { alias: 'foo', path: 'http://www.example.com/path/to/scripts/foo.js', status: 'unshift' }<br><br>
   var res = require.resolve('./bar.js');
   // if the Unshift-Function was called at http://www.example.com/path/to/scripts/foo.js
-  // returns a object with 3 elements, the alias, the path, and the status
+  // returns a object with 3 elements, the alias, the path, and the status<br>
   { alias: undefined, path: 'http://www.example.com/path/to/scripts/foo.js', status: 'loaded' }
   <br>
 </pre>
@@ -182,8 +181,7 @@ The "normal" ways to implement and run these scripts (foo & bar) into the page a
 <pre>
   var async = require('./path/to/scripts/foo.js', function(){
     var context = async();
-    context.require('./bar.js');
-    <br>
+    context.require('./bar.js');<br>
     // do something
     console.log(context.__filename);      // returns 'foo.js'
     console.log(context.__dirname);       // returns 'http://www.example.com/path/to/scripts/'
@@ -193,7 +191,7 @@ The "normal" ways to implement and run these scripts (foo & bar) into the page a
 
 #### <br>Cross-Domain Calls<br>
   These are complete asynchronic and don't support storage or other features,
-  just push scripts into the documen'st head tag.
+  just push scripts into the documen'st head tag,<br>
   for example: We use this to load outside libraries like jQuery or MooTools
   from googleapis.com to get allways the last one.<br>
 <pre>
@@ -202,7 +200,7 @@ The "normal" ways to implement and run these scripts (foo & bar) into the page a
     if(state == 'ready') console.log('great!')
   });<br>
   // without callback
-  require.paths.unshift('jquery', 'http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js')<br>
+  require.paths.unshift('jquery', 'http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js')
   var ret = require('jquery');<br>
   function sayGreat(){
     if(ret().ready){
