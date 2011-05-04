@@ -11,7 +11,7 @@
     just push the scripts into document.head<br>
 
 
-# 1. Supported Methods
+# Supported Methods
 #### &nbsp; &nbsp; (see the example bellow)
 
 * Synchronic:
