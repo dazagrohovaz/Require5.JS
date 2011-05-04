@@ -5,10 +5,8 @@
   * load, compile and run scripts once<br>
   * support sync and async XHR requests<br>
   * storage the scripts on HTML5 Storage if available<br>
-  * data transfer only if required, load scripts from storage or cache<br>
-    if available (no transfer), otherwise load scripts via XHR (data transfer)<br>
-  * cross-domain requests, don't support data storage or other features,<br>
-    just push the scripts into document.head<br>
+  * data transfer only if required, load scripts from storage or cache if available (no transfer), otherwise load scripts via XHR (data transfer)<br>
+  * cross-domain requests, don't support data storage or other features, just push the scripts into document.head<br>
 
 
 # Supported Methods
