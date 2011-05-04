@@ -6,7 +6,7 @@
   * support sync and async XHR requests.<br>
   * storage the scripts on HTML5 Storage if available.<br>
   * data transfer only if required, load scripts from storage or cache if available (no transfer), otherwise load scripts via XHR (data transfer).<br>
-  * cross-domain requests, don't support data storage or other features, just push the scripts into the document's head tag<br>
+  * cross-domain requests (don't support data storage or other features, just push the scripts into the document's head tag<br>
 
 
 # Supported Methods
@@ -193,7 +193,7 @@ The "normal" ways to implement and run these scripts (foo & bar) into the page a
 #### Cross-Domain Calls<br>
 <pre>
   These are complete asynchronic and don't support storage or other features,
-  just push scripts into the document head tag.
+  just push scripts into the documen'st head tag.
 <br>
   for example: We use this to load outside libraries like jQuery or MooTools
   from googleapis.com to get allways the last one.
