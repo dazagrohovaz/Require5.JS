@@ -15,10 +15,10 @@
 ###### (see the example bellow)
 
 * Synchronic:<br>
-<pre>
+<pre><code>
   var sync = require('./path/to/scripts/file.js');
   console.log(sync.works);       // returns 'yes, it\' works...!!'
-</pre>
+</code></pre>
 
 * Asynchronic:<br>
 <pre>
