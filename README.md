@@ -212,7 +212,7 @@ The "normal" ways to implement and run these scripts (foo & bar) into the page a
   setTimeout(sayGreat, 10);
 </pre>
 <br>
-### <br><i>Require5.JS</i>
+#### <br><i>Require5.JS</i><br>
 ###### almost like NodeJS style require-Function for the browser
 (c) DazaGrohovaz.Net <guidoalfredo@dazagrohovaz.net> / ProxyJS.com <support@proxyjs.com><br>
 
