@@ -129,7 +129,7 @@ The "normal" ways to implement and run these scripts (foo & bar) into the page a
 <br>
 </pre>
 
-#### The <i>'require.alias'</i> Attribute<br>
+#### <br>The <i>'require.alias'</i> Attribute<br>
 <pre>
   return a object with all alias and their paths<br>
   { 'foo': 'http://www.example.com/path/to/scripts/foo.js' }
