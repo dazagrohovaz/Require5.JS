@@ -70,17 +70,17 @@ The unshift function is more like an alias, define a shortname for access quickl
   http://www.example.com/path/to/scripts/bar.js
 </pre>
 
-#### In the index.html file:<br>
+#### Into the index.html file:<br>
 <pre>
 The "normal" ways to implement and run these scripts (foo & bar) into the page are<br>
 * First 'bar.js' because 'foo.js' depends of this one,
-  <script src="path/to/scripts/bar.js"></script> or
-  <script src="/path/to/scripts/bar.js"></script> or
-  <script src="./path/to/scripts/bar.js"></script>
-  <script src="http://www.example.com/path/to/scripts/bar.js"></script><br>
+  &lt;script src="path/to/scripts/bar.js"&gt;&l;t/script&gt; or
+  &lt;script src="/path/to/scripts/bar.js"&gt;&lt;/script&gt; or
+  &lt;script src="./path/to/scripts/bar.js"&gt;&lt;/script&gt;
+  &lt;script src="http://www.example.com/path/to/scripts/bar.js"&gt;&lt;/script&gt;<br>
 <br>
 * than 'foo.js'
-  <script src="./path/to/scripts/foo.js"></script>
+  &lt;script src="./path/to/scripts/foo.js"&gt;&lt;/script&gt;
 <br>
 </pre>
 
