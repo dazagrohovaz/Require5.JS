@@ -29,7 +29,8 @@
 
 #### Example: file.js
 
-* <pre>
+* 
+<pre>
 var counter = 0;
 
 // How to overwrite exports with a function
