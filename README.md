@@ -33,7 +33,7 @@
 <pre>
 var counter = 0;
 
-// How to overwrite exports with a function
+How to overwrite exports with a function
 exports = module.exports = function inc(){
 &nbsp; return ++counter;
 };
