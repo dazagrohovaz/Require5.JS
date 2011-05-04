@@ -12,7 +12,7 @@
 
 
 # 1. Supported Methods
-####     (see the example bellow)
+#### &nbsp; &nbsp; (see the example bellow)
 
 * Synchronic:
   var sync = require('./path/to/scripts/file.js');
