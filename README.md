@@ -1,16 +1,16 @@
 #Require5.JS
 ###almost like NodeJS style require-Function for the browser
 
-First: Sorry about my English, but i try to do this understable as posible.
 
-Features:
-  - load, compile and run scripts once
-  - support sync and async XHR requests
-  - storage the scripts on HTML5 Storage if available
-  - data transfer only if required, load scripts from storage or cache
-    if available (no transfer), otherwise load scripts via XHR (data transfer)
-  - cross-domain requests, don't support data storage or other features,
-    just push the scripts into document.head
+####Features:
+
+  - load, compile and run scripts once<br>
+  - support sync and async XHR requests<br>
+  - storage the scripts on HTML5 Storage if available<br>
+  - data transfer only if required, load scripts from storage or cache<br>
+    if available (no transfer), otherwise load scripts via XHR (data transfer)<br>
+  - cross-domain requests, don't support data storage or other features,<br>
+    just push the scripts into document.head<br>
 
 
 1. Supported Methods (see the example bellow)
