@@ -2,12 +2,14 @@ Require5.JS is almost like NodeJS style require-Function for the browser
 
 First: Sorry about my English, but i try to do this understable as posible.
 
-  Features:
-  - load and eval javascripts files once
+Features:
+  - load, compile and run scripts once
   - support sync and async XHR requests
   - storage the scripts on HTML5 Storage if available
   - data transfer only if required, load scripts from storage or cache
     if available (no transfer), otherwise load scripts via XHR (data transfer)
+  - cross-domain requests, don't support data storage or other features,
+    just push the scripts into document.head
 
 
 1. Supported Methods (see the example bellow)
@@ -108,17 +110,17 @@ The private Values:
 
 The require.paths Attribute
 
-	return a object with all module-paths and their status
-	- 'loaded'   : the script is on storage
-	- 'fails'	   : the script couldn't be loaded or compiled
-	- 'unschift' : only an alias name was setted for this script, it is not used any time
-	- 'ready'    : the script is loaded and compiled
-	- undefined
+  return a object with all module-paths and their status
+  - 'loaded'   : the script is on storage
+  - 'fails'    : the script couldn't be loaded or compiled
+  - 'unschift' : only an alias name was setted for this script, it is not used any time
+  - 'ready'    : the script is loaded and compiled
+  - undefined
 
 
 The require.alias Attribute
 
-	return a object with all alias and their paths
+  return a object with all alias and their paths
 
 
 The Unshift-Function: Alias-Names for Script-Files with Path recognition
@@ -156,12 +158,12 @@ The Require-Function's returned Values: exports, module, require, __dirname, __f
     console.log(__dirname);       // returns 'http://www.example.com/path/to/scripts/'
     console.log(exports.works);   // returns 'yes, it\' works...!!'
   }
-  require('http://www.example.com/path/to/scripts/foo.js', requestHandler);
+  require(./path/to/scripts/foo.js', requestHandler);
 
 
 The Require-Function's returned getContext-Function:
   
-  var async = require('http://www.example.com/path/to/scripts/foo.js', function(){
+  var async = require('./path/to/scripts/foo.js', function(){
     var context = async();
     context.require('./bar.js');
     
@@ -171,3 +173,29 @@ The Require-Function's returned getContext-Function:
     console.log(context.exports.works);   // returns 'yes, it\' works...!!'
   });
 
+
+Cross-Domain Calls
+
+  These are complete asynchronic and don't support storage or other features,
+  just push scripts into the document.head.
+
+  For example: We use this to load outside libraries like jQuery or MooTools.
+
+  // with callback
+  require('http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js', function(state){
+    if(state == 'ready') console.log('great!')
+  });
+
+  // without callback
+  require.paths.unshift('jquery', 'http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js')
+
+  var ret = require('jquery');
+  
+  function sayGreat(){
+    if(ret().ready){
+      console.log('great!');
+    }else{
+      setTimeout(sayGreat, 10);
+    }
+  }
+  setTimeout(sayGreat, 10);
