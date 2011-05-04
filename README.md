@@ -46,6 +46,7 @@ exports.works = 'yes, it\' works...!!';
 ## Working with the 'unshift' function
 
 The unshift function is more like an alias, define a shortname for access quickly to the javascript files
+* Example<br>
 <pre>
   require.paths.unshift('file', 'lib/scripts/file.js');
   var unshift = require('file');<br>
