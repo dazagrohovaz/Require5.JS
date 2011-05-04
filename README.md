@@ -1,6 +1,6 @@
 # Require5.JS
 ### almost like NodeJS style require-Function for the browser
-# Features:
+# <br>Features:
 
   - load, compile and run scripts once<br>
   - support sync and async XHR requests<br>
