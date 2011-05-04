@@ -125,7 +125,7 @@ The "normal" ways to implement and run these scripts (foo & bar) into the page a
   - 'unschift' : only an alias name was setted for this script, it is not used any time
   - 'ready'    : the script is loaded and compiled
   - undefined  : the script isn't used, defined or called<br>
-  { 'http://www.example.com/path/to/scripts/foo.js': 'unschift' }
+  { 'http://www.example.com/path/to/scripts/foo.js': 'unschift', 'http://www.example.com/path/to/scripts/bar.js': 'loaded' }
 <br>
 </pre>
 
@@ -157,7 +157,7 @@ The "normal" ways to implement and run these scripts (foo & bar) into the page a
   var res = require.resolve('./bar.js');
   // if the Unshift-Function was called at http://www.example.com/path/to/scripts/foo.js
   // returns a object with 3 elements, the alias, the path, and the status<br>
-  { alias: undefined, path: 'http://www.example.com/path/to/scripts/foo.js', status: 'loaded' }
+  { alias: undefined, path: 'http://www.example.com/path/to/scripts/bar.js', status: 'loaded' }
   <br>
 </pre>
 
