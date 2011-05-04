@@ -124,8 +124,8 @@ The "normal" ways to implement and run these scripts (foo & bar) into the page a
   - 'fails'    : the script couldn't be loaded or compiled
   - 'unschift' : only an alias name was setted for this script, it is not used any time
   - 'ready'    : the script is loaded and compiled
-  - undefined  : the script isn't used, defined or called
-  <br>{ 'http://www.example.com/path/to/scripts/foo.js': 'unschift' }
+  - undefined  : the script isn't used, defined or called<br>
+  { 'http://www.example.com/path/to/scripts/foo.js': 'unschift' }
 <br>
 </pre>
 
