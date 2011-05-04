@@ -31,17 +31,14 @@
 
 * file.js<br>
 <pre>
-var counter = 0;
-
-How to overwrite exports with a function
+var counter = 0;<br>
+// How to overwrite exports with a function
 exports = module.exports = function inc(){
 &nbsp; return ++counter;
-};
-
+};<br>
 exports.reset = function(){
 &nbsp; return counter = 0;
-};
-
+};<br>
 exports.works = 'yes, it\' works...!!';
 </pre>
 
