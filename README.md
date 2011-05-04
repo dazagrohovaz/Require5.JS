@@ -46,6 +46,7 @@ exports.works = 'yes, it\' works...!!';
 ## Working with the 'unshift' function
 
 The unshift function is more like an alias, define a shortname for access quickly to the javascript files
+
 * Example<br>
 <pre>
   require.paths.unshift('file', 'lib/scripts/file.js');
@@ -58,11 +59,12 @@ The unshift function is more like an alias, define a shortname for access quickl
 
 foo.js is the application, but it depends from other scripts, like jQuery. Normaly, these need to be loaded first.
 
-The structure of the site:
-
+* The structure of the site:<br>
+<pre>
   http://www.example.com/index.html
   http://www.example.com/path/to/scripts/foo.js  // depends from bar.js
   http://www.example.com/path/to/scripts/bar.js
+</pre>
 
 In the index.html file:
 
