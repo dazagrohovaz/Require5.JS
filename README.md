@@ -6,7 +6,7 @@
   * support sync and async XHR requests.<br>
   * storage the scripts on HTML5 Storage if available.<br>
   * data transfer only if required, load scripts from storage or cache if available (no transfer), otherwise load scripts via XHR (data transfer).<br>
-  * cross-domain requests (don't support data storage or other features, just push the scripts into the document's head tag<br>
+  * cross-domain requests (don't support data storage or other features, just push the scripts into the document's head tag)<br>
 
 
 # Supported Methods
