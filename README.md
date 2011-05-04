@@ -29,7 +29,7 @@
 </pre>
 
 
-Example of 'file.js'
+### Example of 'file.js'
 ===== BEGIN OF FILE =====
 var counter = 0;
 
@@ -46,7 +46,7 @@ exports.works = 'yes, it\' works...!!';
 ===== END  OF  FILE =====
 
 
-2. Working with the 'unshift' function
+## Working with the 'unshift' function
 
 In the javascript file
 
@@ -57,7 +57,7 @@ In the javascript file
 * The unshift function is more like an alias
 
 
-3. The example site:
+## The example site:
 
 foo.js is the application, but it depends from other scripts, like jQuery. Normaly, these need to be loaded first.
 
@@ -80,8 +80,7 @@ The "normal" ways to implement and run these scripts (foo & bar) into the page a
 * than 'foo.js'
   <script src="./path/to/scripts/foo.js"></script>
 
-
-# Now the same with Require5.JS, with a few changes
+### Now the same with Require5.JS, with a few changes
 
 The structure of example site with Require5.JS:
 
