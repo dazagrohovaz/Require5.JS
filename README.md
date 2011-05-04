@@ -117,7 +117,7 @@ The "normal" ways to implement and run these scripts (foo & bar) into the page a
   __filename : following the previous example, into 'foo.js' it will return 'foo.js'
 </pre>
 
-#### The <i>'require.paths'</i> Attribute<br>
+#### <br>The <i>'require.paths'</i> Attribute<br>
 <pre>
   return a object with all module-paths and their status<br>
   - 'loaded'   : the script is on storage
@@ -125,8 +125,8 @@ The "normal" ways to implement and run these scripts (foo & bar) into the page a
   - 'unschift' : only an alias name was setted for this script, it is not used any time
   - 'ready'    : the script is loaded and compiled
   - undefined  : the script isn't used, defined or called
-  <br>
-  { 'http://www.example.com/path/to/scripts/foo.js': 'unschift' }
+  <br>{ 'http://www.example.com/path/to/scripts/foo.js': 'unschift' }
+<br>
 </pre>
 
 #### The <i>'require.alias'</i> Attribute<br>
@@ -137,24 +137,22 @@ The "normal" ways to implement and run these scripts (foo & bar) into the page a
 </pre>
 
 
-#### The Unshift-Function's returned Value: <h5><i>Alias-Names for Script-Files with Path recognition</i></h5><br>
+#### <br>The Unshift-Function's returned Value: <h5><i>Alias-Names for Script-Files with Path recognition</i></h5>
 <pre>
   var path = require.paths.unshift('foo', './path/to/scripts/foo.js');
   // if the Unshift-Function was called at http://www.example.com/index.html
-  // returns 'http://www.example.com/path/to/scripts/foo.js'
-  <br>
+  // returns 'http://www.example.com/path/to/scripts/foo.js'<br>
   var path = require.paths.unshift('bar', './bar.js');
   // if the Unshift-Function was called at http://www.example.com/path/to/scripts/foo.js
   // returns 'http://www.example.com/path/to/scripts/bar.js'
   <br>
 </pre>
 
-#### The Resolve-Function: <h5><i>Path, Alias and Status recognition</i></h5><br>
+#### <br>The Resolve-Function: <h5><i>Path, Alias and Status recognition</i></h5>
 <pre>
   var res = require.resolve('foo');
   // returns a object with 3 elements, the alias (setted with unshift), the path and the status
-  { alias: 'foo', path: 'http://www.example.com/path/to/scripts/foo.js', status: 'unshift' }
-  <br>
+  { alias: 'foo', path: 'http://www.example.com/path/to/scripts/foo.js', status: 'unshift' }<br>
   var res = require.resolve('./bar.js');
   // if the Unshift-Function was called at http://www.example.com/path/to/scripts/foo.js
   // returns a object with 3 elements, the alias, the path, and the status
@@ -163,12 +161,11 @@ The "normal" ways to implement and run these scripts (foo & bar) into the page a
 </pre>
 
 
-#### The Require-Function's returned Arguments: <h5><i>exports, module, require, __dirname, __filename<h5><i><br>
+#### <br>The Require-Function's returned Arguments: <h5><i>exports, module, require, __dirname, __filename<h5><i>
 <pre>
   function requestHandler(exports, module, require, __dirname, __filename){
     // require continue to work as it will be at 'http://www.example.com/path/to/scripts/foo.js'
-    require('./bar.js');
-    <br>
+    require('./bar.js');<br>
     // do something
     console.log(__filename);      // returns 'foo.js'
     console.log(__dirname);       // returns 'http://www.example.com/path/to/scripts/'
@@ -177,7 +174,7 @@ The "normal" ways to implement and run these scripts (foo & bar) into the page a
   require(./path/to/scripts/foo.js', requestHandler);
 </pre>
 
-#### The Require-Function's returned getContext-Function: <h5><i>Access to the Module-Context of Asynchronic Calls<h5><i><br>
+#### <br>The Require-Function's returned getContext-Function: <h5><i>Access to the Module-Context of Asynchronic Calls<h5><i>
 <pre>
   var async = require('./path/to/scripts/foo.js', function(){
     var context = async();
@@ -190,7 +187,7 @@ The "normal" ways to implement and run these scripts (foo & bar) into the page a
   });
 </pre>
 
-#### Cross-Domain Calls<br>
+#### <br>Cross-Domain Calls<br>
 <pre>
   These are complete asynchronic and don't support storage or other features,
   just push scripts into the documen'st head tag.
