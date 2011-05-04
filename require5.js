@@ -3,11 +3,12 @@
   (c) DazaGrohovaz.Net / ProxyJS.com <guidoalfredo@dazagrohovaz.net>
 
   Features:
-  - load and eval javascripts files once
+  - load, compile and run scripts once
   - support sync and async XHR requests
   - storage the scripts on HTML5 Storage if available
   - data transfer only if required, load scripts from storage or cache
     if available (no transfer), otherwise load scripts via XHR (data transfer)
+  - cross-domain requests (no support data storage)
   
   dependencies:
     utils/ajax.js
