@@ -1,4 +1,4 @@
-# <br><u>Require5.JS</u>
+# <br><i>Require5.JS</i>
 ### almost like NodeJS style require-Function for the browser
 # Features:
 
