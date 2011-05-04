@@ -12,13 +12,13 @@
 # Supported Methods
 ###### (see the example bellow)
 
-* Synchronic:<br>
+* Synchronic<br>
 <pre>
   var sync = require('./path/to/scripts/file.js');
   console.log(sync.works);       // returns 'yes, it\' works...!!'
 </pre>
 
-* Asynchronic:<br>
+* Asynchronic<br>
 <pre>
   require('./path/to/scripts/file.js', function(exports){
   &nbsp; var async = exports;
@@ -27,7 +27,7 @@
 </pre>
 
 
-#### Example: 
+#### Example
 
 * file.js<br>
 <pre>
@@ -55,25 +55,25 @@ The unshift function is more like an alias, define a shortname for access quickl
 </pre>
 
 
-## The Example Site:
+## The Example Site
 
-#### Concept / Idea:<br>
+#### Concept / Idea<br>
 <pre>
   foo.js is the application, but it depends from other scripts, like jQuery. Normaly, these need to be loaded first.
   Well in this case 'foo.js' depends from 'bar.js'.
 </pre>
 
-#### The structure of the site:<br>
+#### The structure of the site<br>
 <pre>
   http://www.example.com/index.html
   http://www.example.com/path/to/scripts/foo.js  // depends from bar.js
   http://www.example.com/path/to/scripts/bar.js
 </pre>
 
-#### Into the index.html file:<br>
+#### Into the index.html file<br>
 <pre>
 The "normal" ways to implement and run these scripts (foo & bar) into the page are<br>
-* First 'bar.js' because 'foo.js' depends of this one<br>
+* first 'bar.js' because 'foo.js' depends of this one<br>
   &lt;script src="path/to/scripts/bar.js"&gt;&lt;/script&gt; or
   &lt;script src="/path/to/scripts/bar.js"&gt;&lt;/script&gt; or
   &lt;script src="./path/to/scripts/bar.js"&gt;&lt;/script&gt;
@@ -85,7 +85,7 @@ The "normal" ways to implement and run these scripts (foo & bar) into the page a
 
 ### Now the same with <i>Require5.JS</i>, with a few changes
 
-#### The structure of example site with <i>Require5.JS</i>:<br>
+#### The structure of example site with <i>Require5.JS</i><br>
 <pre>
   http://www.example.com/index.html
   http://www.example.com/path/to/require/require5.js
@@ -93,7 +93,7 @@ The "normal" ways to implement and run these scripts (foo & bar) into the page a
   http://www.example.com/path/to/scripts/bar.js
 </pre>
 
-#### Into the index.html file:<br>
+#### Into the index.html file<br>
 <pre>
   &lt;script src="./path/to/require/require5.js"&gt;&lt;/script&gt;
   &lt;script&gt;
@@ -109,97 +109,105 @@ The "normal" ways to implement and run these scripts (foo & bar) into the page a
 </pre>
 
 
-## Other features of <i>Require5.JS</i>
+## Other Features and Properties of <i>Require5.JS</i>
 
-The private Values:
+#### Private Values<br>
+<pre>
+  __dirname  : following the previous example, into 'foo.js' it will return 'http://www.example.com/path/to/scripts/'
+  __filename : following the previous example, into 'foo.js' it will return 'foo.js'
+</pre>
 
-  __dirname:  following the previous example, in 'foo.js' it will be 'http://www.example.com/path/to/scripts/'
-  __filename: following the previous example, in 'foo.js' it will be 'foo.js'
-
-
-The require.paths Attribute
-
-  return a object with all module-paths and their status
+#### The <i>'require.paths'</i> Attribute<br>
+<pre>
+  return a object with all module-paths and their status<br>
   - 'loaded'   : the script is on storage
   - 'fails'    : the script couldn't be loaded or compiled
   - 'unschift' : only an alias name was setted for this script, it is not used any time
   - 'ready'    : the script is loaded and compiled
-  - undefined
+  - undefined  : the script isn't used, defined or called
+  <br>
+  { 'http://www.example.com/path/to/scripts/foo.js': 'unschift' }
+</pre>
+
+#### The <i>'require.alias'</i> Attribute<br>
+<pre>
+  return a object with all alias and their paths<br>
+  { 'foo': 'http://www.example.com/path/to/scripts/foo.js' }
+  <br>
+</pre>
 
 
-The require.alias Attribute
-
-  return a object with all alias and their paths
-
-
-The Unshift-Function: Alias-Names for Script-Files with Path recognition
-
+#### The Unshift-Function's returned Value: <h5><i>Alias-Names for Script-Files with Path recognition</i></h5><br>
+<pre>
   var path = require.paths.unshift('foo', './path/to/scripts/foo.js');
-  // if the Unshift-Function was call at http://www.example.com/index.html
-  // like the Resolve-Function returns the path 'http://www.example.com/path/to/scripts/foo.js'
-  
+  // if the Unshift-Function was called at http://www.example.com/index.html
+  // returns 'http://www.example.com/path/to/scripts/foo.js'
+  <br>
   var path = require.paths.unshift('bar', './bar.js');
-  // if the Unshift-Function was call at http://www.example.com/path/to/scripts/foo.js
-  // like the Resolve-Function returns the path 'http://www.example.com/path/to/scripts/bar.js'
-
-
-The Resolve-Function: Path recognition
-
-  var path = require.resolve('./path/to/scripts/foo.js');
-  // if the Resolve-Function was called at http://www.example.com/index.html
-  // returns a object with 3 elements, the alias (setted with unshift),
-  // the path 'http://www.example.com/path/to/scripts/foo.js' and the status
-  
-  var path = require.resolve('./bar.js');
   // if the Unshift-Function was called at http://www.example.com/path/to/scripts/foo.js
-  // returns a object with 3 elements, the alias (setted with unshift),
-  // the path 'http://www.example.com/path/to/scripts/bar.js' and the status
+  // returns 'http://www.example.com/path/to/scripts/bar.js'
+  <br>
+</pre>
+
+#### The Resolve-Function: <h5><i>Path, Alias and Status recognition</i></h5><br>
+<pre>
+  var res = require.resolve('foo');
+  // returns a object with 3 elements, the alias (setted with unshift), the path and the status
+  { alias: 'foo', path: 'http://www.example.com/path/to/scripts/foo.js', status: 'unshift' }
+  <br>
+  var res = require.resolve('./bar.js');
+  // if the Unshift-Function was called at http://www.example.com/path/to/scripts/foo.js
+  // returns a object with 3 elements, the alias, the path, and the status
+  { alias: undefined, path: 'http://www.example.com/path/to/scripts/foo.js', status: 'loaded' }
+  <br>
+</pre>
 
 
-The Require-Function's returned Values: exports, module, require, __dirname, __filename
-
+#### The Require-Function's returned Arguments: <h5><i>exports, module, require, __dirname, __filename<h5><i><br>
+<pre>
   function requestHandler(exports, module, require, __dirname, __filename){
     // require continue to work as it will be at 'http://www.example.com/path/to/scripts/foo.js'
     require('./bar.js');
-    
+    <br>
     // do something
     console.log(__filename);      // returns 'foo.js'
     console.log(__dirname);       // returns 'http://www.example.com/path/to/scripts/'
     console.log(exports.works);   // returns 'yes, it\' works...!!'
   }
   require(./path/to/scripts/foo.js', requestHandler);
+</pre>
 
-
-The Require-Function's returned getContext-Function:
-  
+#### The Require-Function's returned getContext-Function: <h5><i>Access to the Module-Context of Asynchronic Calls<h5><i><br>
+<pre>
   var async = require('./path/to/scripts/foo.js', function(){
     var context = async();
     context.require('./bar.js');
-    
+    <br>
     // do something
     console.log(context.__filename);      // returns 'foo.js'
     console.log(context.__dirname);       // returns 'http://www.example.com/path/to/scripts/'
     console.log(context.exports.works);   // returns 'yes, it\' works...!!'
   });
+</pre>
 
-
-Cross-Domain Calls
-
+#### Cross-Domain Calls<br>
+<pre>
   These are complete asynchronic and don't support storage or other features,
-  just push scripts into the document.head.
-
-  For example: We use this to load outside libraries like jQuery or MooTools.
-
+  just push scripts into the document head tag.
+<br>
+  for example: We use this to load outside libraries like jQuery or MooTools
+  from googleapis.com to get allways the last one.
+<br>
   // with callback
   require('http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js', function(state){
     if(state == 'ready') console.log('great!')
   });
-
+<br>
   // without callback
   require.paths.unshift('jquery', 'http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js')
-
+<br>
   var ret = require('jquery');
-  
+<br>
   function sayGreat(){
     if(ret().ready){
       console.log('great!');
@@ -208,3 +216,4 @@ Cross-Domain Calls
     }
   }
   setTimeout(sayGreat, 10);
+</pre>
