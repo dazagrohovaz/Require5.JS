@@ -194,21 +194,16 @@ The "normal" ways to implement and run these scripts (foo & bar) into the page a
 #### <br>Cross-Domain Calls<br>
 <pre>
   These are complete asynchronic and don't support storage or other features,
-  just push scripts into the documen'st head tag.
-<br>
+  just push scripts into the documen'st head tag.<br>
   for example: We use this to load outside libraries like jQuery or MooTools
-  from googleapis.com to get allways the last one.
-<br>
+  from googleapis.com to get allways the last one.<br>
   // with callback
   require('http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js', function(state){
     if(state == 'ready') console.log('great!')
-  });
-<br>
+  });<br>
   // without callback
-  require.paths.unshift('jquery', 'http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js')
-<br>
-  var ret = require('jquery');
-<br>
+  require.paths.unshift('jquery', 'http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js')<br>
+  var ret = require('jquery');<br>
   function sayGreat(){
     if(ret().ready){
       console.log('great!');
