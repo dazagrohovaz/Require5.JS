@@ -137,7 +137,8 @@ The "normal" ways to implement and run these scripts (foo & bar) into the page a
 </pre>
 
 
-#### <br>The Unshift-Function's returned Value: <h5><i>Alias-Names for Script-Files with Path recognition</i></h5>
+#### <br>The Unshift-Function's returned Value:<br>
+###### <i>Alias-Names for Script-Files with Path recognition</i>
 <pre>
   var path = require.paths.unshift('foo', './path/to/scripts/foo.js');
   // if the Unshift-Function was called at http://www.example.com/index.html
@@ -148,7 +149,8 @@ The "normal" ways to implement and run these scripts (foo & bar) into the page a
   <br>
 </pre>
 
-#### <br>The Resolve-Function: <h5><i>Path, Alias and Status recognition</i></h5>
+#### <br>The Resolve-Function:<br>
+###### <i>Path, Alias and Status recognition</i>
 <pre>
   var res = require.resolve('foo');
   // returns a object with 3 elements, the alias (setted with unshift), the path and the status
@@ -161,7 +163,8 @@ The "normal" ways to implement and run these scripts (foo & bar) into the page a
 </pre>
 
 
-#### <br>The Require-Function's returned Arguments: <h5><i>exports, module, require, __dirname, __filename<h5><i>
+#### <br>The Require-Function's returned Arguments:<br>
+###### <i>exports, module, require, __dirname, __filename<i>
 <pre>
   function requestHandler(exports, module, require, __dirname, __filename){
     // require continue to work as it will be at 'http://www.example.com/path/to/scripts/foo.js'
