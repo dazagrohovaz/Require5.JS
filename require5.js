@@ -340,17 +340,17 @@ if(true /** development??? Set this to true */){
                                    uri.directory + ((uri.directory.substr(-1) != '/' ) ? '/' : '') + 
                                    uri.file + ((!!uri.file && uri.file.substr(-3) == '.js' ) ? '' : '/index.js'),
       
-      //__query = __self.__query = uri.query,
+      __query = __self.__query = uri.query,
       
       // querystring as object
-      //__query = __self.__query = uri.queryKey,
+      __query = __self.__query = uri.queryKey,
       
       // directory and file names
       __dirname = __self.__dirname = __module.slice(0, __module.length - uri.file.length),
       __filename = __self.__filename = uri.file,
       
       // anchor
-      //__anchor = __self.__anchor = ( !!uri.anchor ? uri.anchor : '' ),
+      __anchor = __self.__anchor = ( !!uri.anchor ? uri.anchor : '' ),
       
       // require
       require = __self.require = function(path, callback){ return _require(path, callback); },
@@ -460,6 +460,7 @@ if(true /** development??? Set this to true */){
             if( useStorage ) storage.setItem('script.' + info.path, response);
             paths[info.path] = 'ready';
             Module.module.loaded++;
+            Module.ready = true;
             
             // save module into the cache
             cache[info.path] = Module;
@@ -529,15 +530,14 @@ if(true /** development??? Set this to true */){
             js.setAttribute('type', 'text/javascript');
             js.text = scriptString;
             document.head.appendChild(js);
-            // once compiled remove script from the head 
-            document.head.removeChild(js);
             
             // calling the new function
             var result = window['script.' + this.__module].call(this);
             if( result !== this ) result.src = script;
             
-            // once executed remove the function from window to prevent unwanted calls
+            // once compiled remove the script to prevent unwanted calls
             delete window['script.' + this.__module];
+            document.head.removeChild(js);
             
             // return result back
             return result;
@@ -545,9 +545,23 @@ if(true /** development??? Set this to true */){
             return { e: e, src: script };
           }
         };
-
+        
+        // resolve Origin to make cross-domain calls
+        var host = parseUri(info.path);
+        host = host.protocol + (!!host.protocol ? '://' : '') + host.authority + '/'
+        
         // if status ready
         if( info.status == 'ready' ){
+					// cross-domain
+					if(__module.slice(0,host.length) != host){
+            if(async){
+              // wait 1ms to execute callback to ensure that require return the function
+              setTimeout(function(){
+                callback.call( window, 'ready' );
+              },1);
+            }
+						return function(){ return { ready: true } };
+					} // otherwise
           // search the module in the cache
           var Module = cache[info.path];
           // if the module is present
@@ -575,22 +589,52 @@ if(true /** development??? Set this to true */){
             if(async) parse(script);
             if(!async) return parse(script);
           } else {
-            // otherwise request the script with XHR
-            var req = new xhr();
-            req.open('GET', info.path, async);
-            					
-            // for unittest modus set request header If-Modified-Since
-            if(global.runUnitTest && global.runUnitTest.require) req.setRequestHeader('If-Modified-Since', 'Sat, 1 Jan 2005 00:00:00 GMT');
-            req.onreadystatechange = onReadyStateChange;
-            req.send();
-            
-            // return exports
-            if(!async) return parse(req.responseText);
+            // cross-domain: appendChild to the head
+            if(__module.slice(0,host.length) != host){
+              var 
+              cross = {},
+              js = document.createElement('script');
+              paths[info.path] = 'fails';
+              
+              // onload set paths and module state to ready
+              js.onload = function(){
+                paths[info.path] = 'ready';
+                cross.ready = true;
+                document.head.removeChild(js);
+                if(async) callback.call( window, 'ready' );
+              };
+              js.onreadystatechange = function(){
+                if(this.readyState=='loaded'){
+                  paths[info.path] = 'ready';
+                  cross.ready = true;
+                  document.head.removeChild(js);
+                  if(async) callback.call( window, 'ready' );
+                }
+              };
+              
+              js.src = info.path;
+              // once compiled remove script
+              document.head.appendChild(js);
+              
+              return function(){ return cross };
+            } else {
+              // otherwise request the script with XHR
+              var req = new xhr();
+              req.open('GET', info.path, async);
+              // for unittest modus set request header If-Modified-Since
+              if(global.runUnitTest && global.runUnitTest.require) req.setRequestHeader('If-Modified-Since', 'Sat, 1 Jan 2005 00:00:00 GMT');
+              req.onreadystatechange = onReadyStateChange;
+              req.send();
+              
+              // return exports
+              if(!async) return parse(req.responseText);
+            }
           }
         }
-        // return getContext function
+        // return getContext function, cross-domain calls return allways 
         if(async) return function(){ // getContext-function
           // exports, module, require, __dirname, __filename
+          Module.context.ready = Module.ready || false;
           Module.context.exports = Module.module.exports;
           Module.context.module = Module.module;
           Module.context.require = Module.require;
