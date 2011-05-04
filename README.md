@@ -23,8 +23,8 @@
 * Asynchronic:<br>
 <pre>
   require('./path/to/scripts/file.js', function(exports){
-    var async = exports;
-    console.log(async.works);    // returns 'yes, it\' works...!!'
+  &nbsp; var async = exports;
+  &nbsp; console.log(async.works);    // returns 'yes, it\' works...!!'
   });
 </pre>
 
