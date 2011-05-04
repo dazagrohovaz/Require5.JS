@@ -2,21 +2,23 @@
 ### almost like NodeJS style require-Function for the browser
 # Features:
 
-  - load, compile and run scripts once<br>
-  - support sync and async XHR requests<br>
-  - storage the scripts on HTML5 Storage if available<br>
-  - data transfer only if required, load scripts from storage or cache<br>
+  * load, compile and run scripts once<br>
+  * support sync and async XHR requests<br>
+  * storage the scripts on HTML5 Storage if available<br>
+  * data transfer only if required, load scripts from storage or cache<br>
     if available (no transfer), otherwise load scripts via XHR (data transfer)<br>
-  - cross-domain requests, don't support data storage or other features,<br>
+  * cross-domain requests, don't support data storage or other features,<br>
     just push the scripts into document.head<br>
 
 
 # Supported Methods
 ###### (see the example bellow)
 
-* Synchronic:
+* Synchronic:<br>
+<code>
   var sync = require('./path/to/scripts/file.js');
   console.log(sync.works);       // returns 'yes, it\' works...!!'
+</code>
 
 * Asynchronic:
   require('./path/to/scripts/file.js', function(exports){
