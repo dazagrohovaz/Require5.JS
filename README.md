@@ -15,18 +15,18 @@
 ###### (see the example bellow)
 
 * Synchronic:<br>
-<code>
+<pre>
   var sync = require('./path/to/scripts/file.js');<br>
   console.log(sync.works);       // returns 'yes, it\' works...!!'<br>
-</code>
+</pre>
 
 * Asynchronic:<br>
-<code>
+<pre>
   require('./path/to/scripts/file.js', function(exports){<br>
     var async = exports;<br>
     console.log(async.works);    // returns 'yes, it\' works...!!'<br>
   });<br>
-</code>
+</pre>
 
 
 Example of 'file.js'
